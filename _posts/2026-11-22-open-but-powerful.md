@@ -7,8 +7,6 @@ categories: ["builders"]
 tags: ["ai", "llm", "open-source", "research"]
 ---
 
-# Open but powerful
-
 Open-weight models can be large, capable systems—not just smaller substitutes for hosted AI. But access to model weights is only a starting point. To use these models well, teams need to understand what is actually released, what resources the model needs, and what its license permits.
 
 ## The idea
@@ -25,7 +23,9 @@ For example, the report lists DeepSeek-V3 at 671 billion total parameters and 37
 
 Other models in the report are dense: Qwen3-32B and Gemma 3 27B have the same total and active parameter counts. This can make their resource requirements more predictable than an MoE model’s, though actual performance and operating cost still depend on the hardware and setup.
 
-Context length is another headline number that needs interpretation. The report lists a 128K-token context for gpt-oss and DeepSeek-V3, and a 10-million-token advertised context for Llama 4 Scout. That spread is large enough to matter. A chart of the flagship models’ context lengths makes the contrast easy to see. But a large advertised window is not a guarantee that a model will use every part of a long input equally well. The report cautions that effective context can be lower and depends on the model and inference setup.
+Context length is another headline number that needs interpretation. The report lists a 128K-token context for gpt-oss and DeepSeek-V3, and a 10-million-token advertised context for Llama 4 Scout. That spread is large enough to matter. The chart below compares the reported context lengths across the flagship models. But a large advertised window is not a guarantee that a model will use every part of a long input equally well. The report cautions that effective context can be lower and depends on the model and inference setup.
+
+![Bar chart: Context length comparison across flagship open-weight models (tokens). Context length (tokens) by Model, 8 rows; highest Llama 4 Scout at 10,000,000, lowest DeepSeek-V3 at 128,000.](https://etz69.github.io/assets/posts/open-but-powerful/context-length-comparison-across-flagship-open-weight-models.png)
 
 ## What it means
 
