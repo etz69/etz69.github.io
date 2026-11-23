@@ -25,7 +25,7 @@ For example, the report lists DeepSeek-V3 at 671 billion total parameters and 37
 
 Other models in the report are dense: Qwen3-32B and Gemma 3 27B have the same total and active parameter counts. This can make their resource requirements more predictable than an MoE model’s, though actual performance and operating cost still depend on the hardware and setup.
 
-Context length is another headline number that needs interpretation. The report lists a 128K-token context for gpt-oss and DeepSeek-V3, and a 10-million-token advertised context for Llama 4 Scout. A large advertised window is not a guarantee that a model will use every part of a long input equally well. The report cautions that effective context can be lower and depends on the model and inference setup.
+Context length is another headline number that needs interpretation. The report lists a 128K-token context for gpt-oss and DeepSeek-V3, and a 10-million-token advertised context for Llama 4 Scout. That spread is large enough to matter. A chart of the flagship models’ context lengths makes the contrast easy to see. But a large advertised window is not a guarantee that a model will use every part of a long input equally well. The report cautions that effective context can be lower and depends on the model and inference setup.
 
 ## What it means
 
