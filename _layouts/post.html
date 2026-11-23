@@ -1,0 +1,39 @@
+
+---
+layout: default
+---
+
+<article class="post">
+
+  <header class="post-header">
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% assign words = content | number_of_words %}
+      · {{ words | divided_by: 200 | plus: 1 }} min read
+    </p>
+
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+
+    {% assign abstract = page.abstract | default: page.description %}
+    {% if abstract %}
+      <p class="post-abstract">
+        {{ abstract | escape }}
+      </p>
+    {% endif %}
+
+    {% if page.tags.size > 0 %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+          <span class="post-tag">{{ tag | escape }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
