@@ -3,18 +3,20 @@ layout: default
 ---
 <div class="home">
   <header class="home-hero">
-    <p class="eyebrow">AI · SYSTEMS · RESEARCH</p>
-    <h1 class="home-title">Technical Notes</h1>
-    <p class="home-intro">Exploring AI, agents, models, and systems engineering through practical analysis and research.</p>
+    <p class="eyebrow">AI / SYSTEMS / RESEARCH</p>
+    <h1 class="home-title">Technical Notes<span style="color:#5573c3">.</span></h1>
+    <p class="home-intro">Ideas, experiments, and practical research on AI models, agents, memory, and the systems that make them useful.</p>
   </header>
   {{ content }}
   {% if site.posts.size > 0 %}
-    <section aria-labelledby="latest-writing">
+    <section class="home-section" aria-labelledby="latest-writing">
       <h2 class="section-heading" id="latest-writing">Latest writing</h2>
       <div class="article-list">
         {% for post in site.posts %}
           <article class="article-preview">
-            <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+            {% assign words = post.content | number_of_words %}
+            {% assign minutes = words | divided_by: 200 | plus: 1 %}
+            <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time> · {{ minutes }} min read</p>
             <h3 class="article-preview-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
             {% assign abstract = post.abstract | default: post.description %}
             {% if abstract %}<p class="article-preview-description">{{ abstract | escape }}</p>{% else %}<p class="article-preview-description">{{ post.excerpt | strip_html | truncatewords: 35 }}</p>{% endif %}
@@ -23,7 +25,7 @@ layout: default
                 {% for tag in post.tags limit: 4 %}<span class="post-tag">{{ tag | escape }}</span>{% endfor %}
               </div>
             {% endif %}
-            <a class="read-more" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read article →</a>
+            <a class="read-more" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read article <span aria-hidden="true">→</span></a>
           </article>
         {% endfor %}
       </div>
