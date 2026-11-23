@@ -36,32 +36,11 @@ These percentages are illustrative allocations, not measured recommendations. Re
 
 ### What can occupy a context window?
 
-A context window can contain the task prompt, conversation messages, retrieved memories, other system context, tool results, and skill or procedure guidance. The mix changes from one request to another. Tool outputs and conversation history can grow during an agent run, so the system should make room for information that matters to the next decision.
+A context window can contain several kinds of material: the task prompt, conversation messages, retrieved memories, other system context, tool results, and skill or procedure guidance. The mix changes from one request to another. Tool outputs and conversation history can grow during an agent run, so the system should make room for information that matters to the next decision.
 
-The donut chart uses an illustrative allocation you selected. It is not a measurement of this blog, a typical agent, or any model, and it is not a recommendation that every task should use these exact shares.
+The donut chart uses an illustrative allocation selected by the author. Its figures are not a measurement of this blog, a typical agent, or any model, and they are not a recommendation that every task should use these exact shares.
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="ctx-title ctx-desc">
-  <title id="ctx-title">Illustrative context contents</title>
-  <desc id="ctx-desc">Donut chart: prompt 25%, messages 30%, memories 10%, other context 10%, tool results 15%, skills 10%. These are illustrative proportions, not measured data.</desc>
-  <g transform="rotate(-90 120 120)" fill="none" stroke-width="32">
-    <circle cx="120" cy="120" r="50" stroke="#2563eb" stroke-dasharray="78.54 235.62" />
-    <circle cx="120" cy="120" r="50" stroke="#16a34a" stroke-dasharray="94.25 219.91" stroke-dashoffset="-78.54" />
-    <circle cx="120" cy="120" r="50" stroke="#f59e0b" stroke-dasharray="31.42 282.74" stroke-dashoffset="-172.79" />
-    <circle cx="120" cy="120" r="50" stroke="#8b5cf6" stroke-dasharray="31.42 282.74" stroke-dashoffset="-204.21" />
-    <circle cx="120" cy="120" r="50" stroke="#ef4444" stroke-dasharray="47.12 267.04" stroke-dashoffset="-235.63" />
-    <circle cx="120" cy="120" r="50" stroke="#64748b" stroke-dasharray="31.42 282.74" stroke-dashoffset="-282.75" />
-  </g>
-  <text x="120" y="116" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111827">Illustrative</text>
-  <text x="120" y="135" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111827">context mix</text>
-  <g font-family="sans-serif" font-size="13" fill="#111827">
-    <circle cx="215" cy="55" r="5" fill="#2563eb"/><text x="228" y="60">Prompt — 25%</text>
-    <circle cx="215" cy="82" r="5" fill="#16a34a"/><text x="228" y="87">Messages — 30%</text>
-    <circle cx="215" cy="109" r="5" fill="#f59e0b"/><text x="228" y="114">Memories — 10%</text>
-    <circle cx="215" cy="136" r="5" fill="#8b5cf6"/><text x="228" y="141">Other context — 10%</text>
-    <circle cx="215" cy="163" r="5" fill="#ef4444"/><text x="228" y="168">Tool results — 15%</text>
-    <circle cx="215" cy="190" r="5" fill="#64748b"/><text x="228" y="195">Skills — 10%</text>
-  </g>
-</svg>
+![Illustrative figures, not measured. Donut chart: Illustrative context contents. Share by Part, total 100: Messages 30%, Prompt 25%, Tool results 15%, Memories 10%, Other context 10%.](https://etz69.github.io/assets/posts/context-engineering-smaller-models/illustrative-context-contents.png)
 
 The chart is a teaching aid, not evidence about token use. In a real system, categories may overlap: a message can include a tool result, and a memory may be inserted as retrieved context. Measure actual token use from the assembled model request before making operational decisions. The useful question is whether the next inference has the current instruction, reliable evidence, and relevant state it needs.
 
