@@ -1,39 +1,25 @@
-
 ---
 layout: default
 ---
-
-<article class="post">
-
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
-      {% assign words = content | number_of_words %}
-      · {{ words | divided_by: 200 | plus: 1 }} min read
+      {% assign word_count = content | number_of_words %}
+      {% assign minutes = word_count | divided_by: 200 | plus: 1 %}
+      <span aria-hidden="true"> · </span>{{ minutes }} min read
     </p>
-
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-
+    <h1 class="post-title p-name" itemprop="headline">{{ page.title | escape }}</h1>
     {% assign abstract = page.abstract | default: page.description %}
-    {% if abstract %}
-      <p class="post-abstract">
-        {{ abstract | escape }}
-      </p>
-    {% endif %}
-
+    {% if abstract %}<p class="post-abstract" itemprop="description">{{ abstract | escape }}</p>{% endif %}
     {% if page.tags.size > 0 %}
-      <div class="post-tags">
-        {% for tag in page.tags %}
-          <span class="post-tag">{{ tag | escape }}</span>
-        {% endfor %}
+      <div class="post-tags" aria-label="Article topics">
+        {% for tag in page.tags %}<span class="post-tag">{{ tag | escape }}</span>{% endfor %}
       </div>
     {% endif %}
   </header>
-
-  <div class="post-content">
-    {{ content }}
-  </div>
-
+  <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
