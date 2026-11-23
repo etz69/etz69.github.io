@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="home">
+  <header class="home-hero">
+    <p class="eyebrow">AI · SYSTEMS · RESEARCH</p>
+    <h1 class="home-title">Technical Notes</h1>
+    <p class="home-intro">Exploring AI, agents, models, and systems engineering through practical analysis and research.</p>
+  </header>
+  {{ content }}
+  {% if site.posts.size > 0 %}
+    <section aria-labelledby="latest-writing">
+      <h2 class="section-heading" id="latest-writing">Latest writing</h2>
+      <div class="article-list">
+        {% for post in site.posts %}
+          <article class="article-preview">
+            <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+            <h3 class="article-preview-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+            {% assign abstract = post.abstract | default: post.description %}
+            {% if abstract %}<p class="article-preview-description">{{ abstract | escape }}</p>{% else %}<p class="article-preview-description">{{ post.excerpt | strip_html | truncatewords: 35 }}</p>{% endif %}
+            {% if post.tags.size > 0 %}
+              <div class="post-tags" aria-label="Article topics">
+                {% for tag in post.tags limit: 4 %}<span class="post-tag">{{ tag | escape }}</span>{% endfor %}
+              </div>
+            {% endif %}
+            <a class="read-more" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read article →</a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>
